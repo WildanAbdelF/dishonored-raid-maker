@@ -22,14 +22,26 @@ const PRESETS = {
     label: 'Classic Lineup',
     roles: 'MT:1, PR:1, Ice Stacking:1, FU:1, MC:1, SM:1, Archer:1, DPS:1',
   },
-  gdn_hc: {
-    label: 'GDN HC (FU, PR, MC, SM, MT, Ice Stacking, Archer, DPS)',
-    roles: 'FU:2, PR:1, MC:1, SM:1, MT:1, Ice Stacking:1, Archer:2, DPS:3',
+  no_mc: {
+    label: 'NO MC (MT, PR, FU, SM, Ice Stacking, Archer, DPS)',
+    roles: 'MT:1, PR:1, Ice Stacking:1, FU:1, SM:1, Archer:1, DPS:2',
   },
-  raid_basic: {
-    label: 'Raid Basic (Tank, Healer, DPS)',
-    roles: 'Tank:1, Healer:1, DPS:3',
+  kali_over_mc: {
+    label: 'Kali Over MC (MT, PR, FU, SM, Ice Stacking, Kali, Archer, DPS)',
+    roles: 'MT:1, PR:1, Ice Stacking:1, FU:1, SM:1, Kali:1, Archer:1, DPS:1',
   },
+  saleana_over_icestack: {
+    label: 'Saleana Over Ice Stacking (MT, PR, FU, SM, Saleana, Ice Stacking, Archer, DPS)',
+    roles: 'MT:1, PR:1, Saleana:1, FU:1, SM:1, MC:1, Archer:1, DPS:1',
+  },
+
+  dps_no_mc: {
+    label: '3 DPS (MT, PR, FU, SM, Ice Stacking, Archer, DPS)',
+    roles: 'MT:1, PR:1, Ice Stacking:1, FU:1, SM:1, DPS:3',
+  },
+
+
+
 };
 
 const PRESET_CHOICES = Object.entries(PRESETS).map(([value, { label }]) => ({ name: label, value }));
