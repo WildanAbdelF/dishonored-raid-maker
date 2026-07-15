@@ -81,7 +81,7 @@ module.exports = {
             .setRequired(false),
         )
         .addBooleanOption((opt) =>
-          opt.setName('notify').setDescription('Kirim @here saat party dibuat? (default: ya)').setRequired(false),
+          opt.setName('notify').setDescription('Kirim @DISHONORED saat party dibuat? (default: ya)').setRequired(false),
         ),
     ),
 
@@ -135,7 +135,7 @@ module.exports = {
     const embed = buildEmbed(party);
     const components = buildComponents(party);
 
-    const content = notify ? '@here' : undefined;
+    const content = notify ? '@DISHONORED' : undefined;
 
     await interaction.reply({
       content,

@@ -24,6 +24,11 @@ function isHost(interaction, party) {
   return interaction.user.id === party.hostId;
 }
 
+async function resolveNotifyRole(interaction) {
+  const roles = await interaction.guild.roles.fetch();
+  return roles.find((role) => role.name.trim().toLowerCase() === 'dishonored') || null;
+}
+
 async function handleButton(interaction) {
   const [, partyId, action, extra] = interaction.customId.split(':');
   const party = getParty(partyId);
@@ -137,7 +142,20 @@ async function handleButton(interaction) {
         await interaction.reply({ content: '⚠️ Hanya host yang bisa notify ulang.', ephemeral: true });
         return;
       }
-      await interaction.reply({ content: `@here | Party **${party.title}** masih butuh member! Yuk join 🙌` });
+
+      const notifyRole = await resolveNotifyRole(interaction);
+      if (!notifyRole) {
+        await interaction.reply({
+          content: '⚠️ Role `DISHONORED` tidak ditemukan di server ini.',
+          ephemeral: true,
+        });
+        return;
+      }
+
+      await interaction.reply({
+        content: `<@&${notifyRole.id}> | Party **${party.title}** masih butuh member sob, lezgo join 🙌`,
+        allowedMentions: { roles: [notifyRole.id] },
+      });
       return;
     }
 

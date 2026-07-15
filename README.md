@@ -11,6 +11,8 @@
    - Jalankan `npm install`.
    - Copy `.env.example` menjadi `.env`.
    - Isi `DISCORD_TOKEN`, `CLIENT_ID`, dan jika perlu `GUILD_ID`.
+   - Kalau ingin tombol notify men-tag role tertentu, isi `NOTIFY_ROLE_ID` atau `NOTIFY_ROLE_NAME`.
+   - Role tersebut harus bisa di-mention oleh bot di server.
 
 3. Daftarkan slash command ke Discord.
    ```bash
