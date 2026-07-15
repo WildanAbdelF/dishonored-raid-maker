@@ -4,17 +4,16 @@ const { buildEmbed, buildComponents } = require('../utils/partyView');
 
 // Emoji default untuk role yang namanya dikenali (silakan tambah/ubah sesuai game kamu)
 const KNOWN_ROLE_EMOJIS = {
-  fu: '🔴',
-  pr: '🔫',
-  mc: '🛡️',
-  sm: '💥',
-  mt: '🌿',
+  fu: '🧙‍♀️',
+  pr: '❤️',
+  mc: '🔨',
+  sm: '🗡',
+  mt: '🛡',
   'ice stacking': '❄️',
+  saleana: '🪄',
   archer: '🏹',
   dps: '⚔️',
-  tank: '🛡️',
-  heal: '💚',
-  healer: '💚',
+  kali: '🪭',
 };
 const FALLBACK_EMOJIS = ['🔹', '🔸', '🔷', '🔶', '⭐', '✨', '🎯', '🎲'];
 
