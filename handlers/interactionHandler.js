@@ -141,6 +141,25 @@ async function handleButton(interaction) {
       return;
     }
 
+    case 'tagall': {
+      if (!isHost(interaction, party)) {
+        await interaction.reply({ content: '⚠️ Hanya host yang bisa tag semua member.', ephemeral: true });
+        return;
+      }
+
+      const memberIds = [...new Set(party.roles.flatMap((role) => role.members))];
+      if (memberIds.length === 0) {
+        await interaction.reply({ content: 'ℹ️ Belum ada member yang join ke party ini.', ephemeral: true });
+        return;
+      }
+
+      await interaction.reply({
+        content: `📣 Tag semua member party **${party.title}**:\n${memberIds.map((id) => `<@${id}>`).join(' ')}`,
+        allowedMentions: { users: memberIds },
+      });
+      return;
+    }
+
     default:
       return;
   }

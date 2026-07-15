@@ -115,6 +115,15 @@ module.exports = {
       return;
     }
 
+    const totalSlots = roles.reduce((sum, role) => sum + role.max, 0);
+    if (totalSlots > 8) {
+      await interaction.reply({
+        content: `⚠️ Maximal 8 Orang Goblog. Yang lu buat itu ${totalSlots} slot.`,
+        ephemeral: true,
+      });
+      return;
+    }
+
     const party = createParty({
       guildId: interaction.guildId,
       channelId: interaction.channelId,

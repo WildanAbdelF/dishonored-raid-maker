@@ -44,6 +44,7 @@ function buildEmbed(party) {
 
 function buildComponents(party) {
   const disabled = party.status !== 'open';
+  const hasMembers = party.roles.some((role) => role.members.length > 0);
   const rows = [];
 
   // Tombol role, maksimal 5 per baris
@@ -111,6 +112,12 @@ function buildComponents(party) {
       .setEmoji('📝')
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(party.status === 'done' || party.status === 'cancelled'),
+    new ButtonBuilder()
+      .setCustomId(`party:${party.id}:tagall`)
+      .setLabel('Tag All')
+      .setEmoji('📣')
+      .setStyle(ButtonStyle.Primary)
+      .setDisabled(party.status === 'done' || party.status === 'cancelled' || !hasMembers),
     new ButtonBuilder()
       .setCustomId(`party:${party.id}:notify`)
       .setLabel('Notify Again')
